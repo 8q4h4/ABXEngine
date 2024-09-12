@@ -651,7 +651,9 @@ while wait() do
 								v.Transparency = .99
 							end
 						end
-						v.Character:FindFirstChild("Head"):FindFirstChild("face").Transparency = 1
+						if v.Character:FindFirstChild("Head"):FindFirstChild("face") then
+							v.Character:FindFirstChild("Head"):FindFirstChild("face").Transparency = 1
+						end
 					else
 						UI.Highlight.Enabled = false
 						for i, v in pairs(v.Character:GetDescendants()) do
@@ -659,7 +661,9 @@ while wait() do
 								v.Transparency = 0
 							end
 						end
-						v.Character:FindFirstChild("Head"):FindFirstChild("face").Transparency = 0
+						if v.Character:FindFirstChild("Head"):FindFirstChild("face") then
+							v.Character:FindFirstChild("Head"):FindFirstChild("face").Transparency = 0
+						end
 					end
 
 					UI.Visible = true;
@@ -674,7 +678,9 @@ while wait() do
 							end
 						end
 						
-						v.Character:FindFirstChild("Head"):FindFirstChild("face").Transparency = 0
+						if v.Character:FindFirstChild("Head"):FindFirstChild("face") then
+							v.Character:FindFirstChild("Head"):FindFirstChild("face").Transparency = 0
+						end
 					end
 					UI.Visible = false
 				end
