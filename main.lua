@@ -55,8 +55,9 @@ game:GetService("SoundService"):PlayLocalSound(sound)
 
 wait(.5)
 
+local startTime = tick()
 while true do 
-	if math.random(1, 100) == math.random(1, 100) then
+	if startTime + (math.random(10, 50) / 10) < tick() then
 		break
 	end
 end
@@ -557,7 +558,8 @@ local function DrawESP(char)
 	end]]
 end
 
-print(globals)
+getfenv().a0da9c96b32bdb15e177a661f6f81742ffb = {}
+getfenv().a0da9c96b32bdb15e177a661f6f81742ffb._g_vars = globals
 
 while wait() do
 	for i, v in pairs(workspace:GetDescendants()) do
