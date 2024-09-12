@@ -20,7 +20,7 @@ return function()
 	--Properties:
 
 	abc.Name = "abc"
-	abc.Parent = game.ReplicatedStorage
+	abc.Parent = game:GetService("ReplicatedStorage")
 	abc.ZIndexBehavior = Enum.ZIndexBehavior.Sibling
 
 	ESPTemplate.Name = "ESPTemplate"
