@@ -440,7 +440,7 @@ local function DrawESP(char)
 				if limbs.Head_UpperTorso.Visible ~= false then
 					Visibility(false)
 				end
-				if game.Players:FindFirstChild(plr.Name) == nil then 
+				if workspace:FindFirstChild(char.Name) == nil then 
 					for i, v in pairs(limbs) do
 						v:Remove()
 					end
