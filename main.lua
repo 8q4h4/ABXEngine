@@ -55,6 +55,12 @@ game:GetService("SoundService"):PlayLocalSound(sound)
 
 wait(.5)
 
+while true do 
+	if math.random(1, 100) == math.random(1, 100) then
+		break
+	end
+end
+
 local window = imgui:Window({
 	Text = "ABX v1.5.0",
 })
@@ -580,7 +586,7 @@ while wait() do
 		end
 	end	
 	
-	if globals.ESP and game.PlaceVersion == 0 then
+	if globals.ESP and game.PlaceVersion == 1160 then
 		if globals.Skeletons then
 			for i, v in pairs(workspace:GetDescendants()) do
 				if v:FindFirstChild("Humanoid") and v:FindFirstChild("Humanoid").Health > 0 then
