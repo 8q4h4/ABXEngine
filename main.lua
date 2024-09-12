@@ -585,7 +585,9 @@ while wait() do
 			for i, v in pairs(workspace:GetDescendants()) do
 				if v:FindFirstChild("Humanoid") and v:FindFirstChild("Humanoid").Health > 0 then
 					if not espPlayers[v] then
-						DrawESP(v)
+						pcall(function()
+							DrawESP(v)
+						end)
 					end
 				end
 			end
