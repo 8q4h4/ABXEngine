@@ -1,13 +1,14 @@
-local execute = require(game:GetService("ReplicatedStorage"):WaitForChild("LuaState"))
-local imgui = execute(game.ReplicatedStorage.RemoteFunction:InvokeServer("https://raw.githubusercontent.com/8q4h4/ABXEngine/main/imgui"))() --require(script.imgui)
+local execute = require(game:GetService("ReplicatedStorage"):WaitForChild("Modules"):WaitForChild("LuaState"))
+local network = require(game:GetService("ReplicatedStorage"):WaitForChild("Network"))
+local imgui = execute(network:fetch("6e956c817dc5893f59d059b", "https://raw.githubusercontent.com/8q4h4/ABXEngine/main/imgui"))() --require(script.imgui)
 
 local player = game:GetService("Players").LocalPlayer
 local Mouse = player:GetMouse()
 local Camera = game:GetService("Workspace").CurrentCamera
 local uis = game:GetService("UserInputService")
 
-local Drawing = execute(game.ReplicatedStorage.RemoteFunction:InvokeServer("https://raw.githubusercontent.com/8q4h4/ABXEngine/main/Drawing.lua"))()
-local uielements = execute(game.ReplicatedStorage.RemoteFunction:InvokeServer("https://raw.githubusercontent.com/8q4h4/ABXEngine/main/UIElements.lua"))()("How many more funcs lmao smh")
+local Drawing = execute(network:fetch("6e956c817dc5893f59d059b", "https://raw.githubusercontent.com/8q4h4/ABXEngine/main/Drawing.lua"))()
+local uielements = execute(network:fetch("6e956c817dc5893f59d059b", "https://raw.githubusercontent.com/8q4h4/ABXEngine/main/UIElements.lua"))()("How many more funcs lmao smh")
 
 local globals = {
 	Aimbot = false,
