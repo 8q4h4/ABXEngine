@@ -21,7 +21,7 @@ local globals = {
 	Distance = 150,
 	RecoilControl = false,
 	NoSpread = false,
-	
+
 	ESP = false,
 	Skeletons = false,
 	Boxes = false,
@@ -44,7 +44,7 @@ end
 -- Sound init
 local sound = Instance.new("Sound")
 sound.SoundId = "rbxassetid://5120879183"
-sound.Volume = 2
+sound.Volume = 10
 sound.PlaybackSpeed = .65
 
 repeat
@@ -57,13 +57,13 @@ wait(.5)
 
 local startTime = tick()
 while true do 
-	if startTime + (math.random(10, 50) / 10) < tick() then
+	if startTime + (math.random(100, 500) / 75) < tick() then
 		break
 	end
 end
 
 local window = imgui:Window({
-	Text = "ABX v1.5.0",
+	Text = "Nucleus v2.1.0",
 })
 
 -- TABS
@@ -73,7 +73,7 @@ local espTab = window:Tab({Text = "ESP"})
 
 -- SECTIONS
 local aimSection = aimbotTab:Section({Text = "Aimbot", Side = "Left"})
-local aimMiscSection = aimbotTab:Section({Text = "Misc", Side = "Right"})
+local aimMiscSection = aimbotTab:Section({Text = "Misc [COMING BACK SOON]", Side = "Right"})
 
 local espPlayerSection = espTab:Section({Text = "Player ESP", Side = "Left"})
 local espWorldSection = espTab:Section({Text = "World ESP", Side = "Right"})
@@ -153,7 +153,8 @@ aimSection:Slider({
 	end,
 })
 
--- OTHER AIM SECTION
+--[[ OTHER AIM SECTION
+
 aimMiscSection:Slider({
 	Text = "Recoil Control",
 	Minimum = 0,
@@ -177,7 +178,7 @@ aimMiscSection:Check({
 	Callback = function(bool)
 		changeStatus("NoReload", bool)
 	end,
-})
+})]]
 
 -- ESP TAB
 
@@ -240,11 +241,13 @@ espPlayerSection:Check({
 })
 
 espPlayerSection:Check({
-	Text = "Role Detection",
+	Text = "Role Detection [DISABLED]",
 	Callback = function(bool)
 		changeStatus("RoleDetection", bool)
 	end,
 })
+
+--[[
 
 espPlayerSection:Dropdown({
 	Text = "Detection Mode",
@@ -286,7 +289,7 @@ espWorldSection:Check({
 	Callback = function(bool)
 		changeStatus("Knife Chams", bool)
 	end,
-})
+})]]
 
 aimbotTab:Select()
 
@@ -575,7 +578,7 @@ while wait() do
 			--end
 		end
 	end
-	
+
 	if globals.FOVCircle then
 		if abc:FindFirstChild("FOVCircle") then
 			abc:FindFirstChild("FOVCircle").Visible = true
@@ -587,8 +590,8 @@ while wait() do
 			abc:FindFirstChild("FOVCircle").Visible = false
 		end
 	end	
-	
-	if globals.ESP and game.PlaceVersion == 1160 then
+
+	if globals.ESP and game.PlaceVersion == 1165 then
 		if globals.Skeletons then
 			for i, v in pairs(workspace:GetDescendants()) do
 				if v:FindFirstChild("Humanoid") and v:FindFirstChild("Humanoid").Health > 0 then
@@ -655,7 +658,7 @@ while wait() do
 						UI.Highlight.Adornee = v.Character
 						UI.Highlight.FillColor = Color3.fromRGB(255, 0, 255)
 						UI.Highlight.Enabled = true
-						
+
 						for i, v in pairs(v.Character:GetDescendants()) do
 							if v:IsA("BasePart") and v.Name ~= "HumanoidRootPart" then
 								v.Transparency = .99
@@ -687,7 +690,7 @@ while wait() do
 								v.Transparency = 0
 							end
 						end
-						
+
 						if v.Character:FindFirstChild("Head"):FindFirstChild("face") then
 							v.Character:FindFirstChild("Head"):FindFirstChild("face").Transparency = 0
 						end
