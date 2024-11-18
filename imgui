@@ -94,8 +94,8 @@ local Colors = {
 	TertiaryText = Color3.fromRGB(158, 158, 158),
 	Hovering = Color3.fromRGB(56, 53, 56),
 	-- Rebrand colors
-	Accent = Color3.fromRGB(170, 85, 255),
-	DarkerAccent = Color3.fromRGB(123, 61, 184),
+	Accent = Color3.fromRGB(255, 170, 0),--Color3.fromRGB(170, 85, 255),
+	DarkerAccent = Color3.fromRGB(181, 121, 0),--Color3.fromRGB(123, 61, 184),
 	-- end here
 	AccentText = Color3.fromRGB(235, 235, 235)
 }
@@ -297,9 +297,9 @@ function library:Window(WindowArgs)
 	bottomText.CloseConsole.MouseButton1Click:Connect(function()
 		WindowTable:ToggleConsole()
 	end)
-	
+
 	local eventBind = Instance.new("BindableFunction")
-	
+
 	function eventBind.OnInvoke(choice)
 		if choice == "Yes" then
 			print("game crash")
@@ -352,7 +352,7 @@ function library:Window(WindowArgs)
 			})
 		})
 	end
-	
+
 	Window.Parent = game:GetService("Players").LocalPlayer:WaitForChild("PlayerGui")
 
 	local ResizeButton = Window.Main.Bottom.ResizeIcon.ResizeButton
