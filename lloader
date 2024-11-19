@@ -52,8 +52,7 @@ local initPacket = {
 	Method = "GET",
 }
 
-local initResponse, statusCode = network:call("/http", initPacket)
-
+local initResponse, statusCode = network:fetch("/http", initPacket)
 local LoukaLoader = Instance.new("ScreenGui")
 local Main = Instance.new("Frame")
 local Title = Instance.new("TextLabel")
