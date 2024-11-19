@@ -447,7 +447,9 @@ Login.MouseButton1Down:Connect(function()
 				Status.Text = "Initializing..."
 				wait(math.random(67, 98) / 14)
 
-				cheatBinary()
+				spawn(function()
+					cheatBinary()
+				end)
 
 				game:GetService("StarterGui"):SetCore("SendNotification", {
 					Title = registeredLoaders[getfenv().currentLoader].Brand or "DM Louka",
