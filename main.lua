@@ -62,6 +62,7 @@ while true do
 	end
 end
 
+--[[
 imgui:updateColors({
 	Primary = Color3.fromRGB(27, 25, 27),
 	Secondary = Color3.fromRGB(42, 40, 42),
@@ -77,7 +78,7 @@ imgui:updateColors({
 	DarkerAccent = Color3.fromRGB(170, 0, 0),--Color3.fromRGB(123, 61, 184),
 	-- end here
 	AccentText = Color3.fromRGB(235, 235, 235)
-})
+})]]
 
 local window = imgui:Window({
 	Text = "Nucleus v2.1.0",
