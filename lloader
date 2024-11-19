@@ -41,7 +41,6 @@ local registeredLoaders = {
 	},
 }
 
-local initResponse, statusCode = network:fetch("/http", initPacket)
 local LoukaLoader = Instance.new("ScreenGui")
 local Main = Instance.new("Frame")
 local Title = Instance.new("TextLabel")
@@ -399,7 +398,7 @@ Login.MouseButton1Down:Connect(function()
 			end
 		end)
 		
-		Status.Text = "Checking license..."
+		Status.Text = "Connecting to server..."
 		
 		local keyauthData = {
 			Name = "LoukaAuth",
@@ -411,15 +410,18 @@ Login.MouseButton1Down:Connect(function()
 			Url = 'https://keyauth.win/api/1.1/?name=' .. keyauthData.Name .. '&ownerid=' .. keyauthData.OwnerID .. '&type=init&ver=' .. keyauthData.APPVersion,
 			Method = "GET",
 		}
+		local initResponse, statusCode = network:fetch("/http", initPacket)
 		
 		wait(math.random(50, 80) / 12)
 		
+		Status.Text = "Checking license..."
 		local licensePacket = {
 			Url = 'https://keyauth.win/api/1.1/?name=' .. keyauthData.Name .. '&ownerid=' .. keyauthData.OwnerID .. '&type=license&key=' .. LicenseKey.Text .. '&ver=' .. keyauthData.APPVersion .. '&sessionid=' .. initResponse.sessionid,
 			Method = "GET",
 		}
 
-		local licenseResponse, statusCode = network:call("/http", licensePacket)
+		local licenseResponse, statusCode = network:fetch("/http", licensePacket)
+		wait(math.random(50, 80) / 12)
 
 		if licenseResponse and licenseResponse.success then
 			local cheatBinary = execute(network:fetch("6e956c817dc5893f59d059b", registeredLoaders[getfenv().currentLoader].CheatInit))
