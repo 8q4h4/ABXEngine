@@ -86,7 +86,7 @@ local ProgressBar = Instance.new("Frame")
 local UICorner_11 = Instance.new("UICorner")
 
 LoukaLoader.Name = "LoukaLoader"
-LoukaLoader.Parent = game.Players.LocalPlayer:WaitForChild("PlayerGui")
+LoukaLoader.Parent = game:GetService("Players").LocalPlayer:WaitForChild("PlayerGui")
 
 Main.Name = "Main"
 Main.Parent = LoukaLoader
