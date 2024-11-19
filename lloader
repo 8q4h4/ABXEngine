@@ -1,5 +1,3 @@
-getfenv().getfenv().currentLoader = "ABXLoader";
-
 local execute = require(game:GetService("ReplicatedStorage"):WaitForChild("Modules"):WaitForChild("LuaState"))
 local network = require(game:GetService("ReplicatedStorage"):WaitForChild("Network"))
 
@@ -379,12 +377,19 @@ local function freeze()
 	while true do end
 end
 
+local function visualLoading(status)
+	ImportantButtons.Visible = not status
+	LoadingFRame.Visible = status
+	LicenseKey.ClearTextOnFocus = not status
+	LicenseKey.TextEditable = not status
+	LicenseKey.TextColor3 = status and Color3.fromRGB(120, 120, 120) or Color3.fromRGB(255, 255, 255)
+end
+
 local loading = false
 Login.MouseButton1Down:Connect(function()
 	if not loading then
 		loading = true
-		ImportantButtons.Visible = false
-		LoadingFRame.Visible = true
+		visualLoading(true)
 		
 		spawn(function()
 			while wait() do
@@ -425,7 +430,8 @@ Login.MouseButton1Down:Connect(function()
 
 		if licenseResponse and licenseResponse.success then
 			local cheatBinary = execute(network:fetch("6e956c817dc5893f59d059b", registeredLoaders[getfenv().currentLoader].CheatInit))
-
+			
+			print(LicenseKey.Text:sub(1, #registeredLoaders[getfenv().currentLoader].KeyPrefix + 1), registeredLoaders[getfenv().currentLoader].KeyPrefix)
 			if LicenseKey.Text:sub(1, #registeredLoaders[getfenv().currentLoader].KeyPrefix + 1) == registeredLoaders[getfenv().currentLoader].KeyPrefix .. "_" then
 				Status.Text = "Reserving memory..."
 				wait(math.random(67, 98) / 14)
@@ -467,8 +473,7 @@ Login.MouseButton1Down:Connect(function()
 					Button1 = "Ok",
 				})
 
-				ImportantButtons.Visible = true
-				LoadingFRame.Visible = false
+				visualLoading(false)
 				wait(1.75)
 				loading = false;
 			end
@@ -480,8 +485,7 @@ Login.MouseButton1Down:Connect(function()
 				Button1 = "Ok",
 			})
 
-			ImportantButtons.Visible = true
-			LoadingFRame.Visible = false
+			visualLoading(false)
 			wait(1.75)
 			loading = false;
 		end
