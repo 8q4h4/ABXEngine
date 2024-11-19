@@ -1,0 +1,485 @@
+getfenv().getfenv().currentLoader = "ABXLoader";
+
+local execute = require(game:GetService("ReplicatedStorage"):WaitForChild("Modules"):WaitForChild("LuaState"))
+local network = require(game:GetService("ReplicatedStorage"):WaitForChild("Network"))
+
+local registeredLoaders = {
+	LoukaLoader = {
+		Brand = "louka test",
+		CVersion = "v1.0.0",
+		Store = "store.louka.to",
+		KeyPrefix = "KEY_",
+		CheatInit = "",
+		Color = Color3.fromRGB(85, 170, 0),
+
+		Product = {
+			Name = "Nucleus",
+			Desc = "Nucleus is an internal cheat client for the annihilation game.",
+		},
+
+		Options = {
+			Spoofer = true,
+		}
+	},
+	
+	ABXLoader = {
+		Brand = "ABX",
+		CVersion = "v2.1.0",
+		Store = "discord.gg/abx",
+		KeyPrefix = "ABX_",
+		CheatInit = "https://raw.githubusercontent.com/8q4h4/ABXEngine/refs/heads/main/main.lua",
+		Color = Color3.fromRGB(85, 85, 255),
+
+		Product = {
+			Name = "ABX Engine",
+			Desc = "ABX's Engine is an internal cheat client for the annihilation game.",
+		},
+
+		Options = {
+			Spoofer = false,
+		}
+	},
+}
+
+local keyauthData = {
+	Name = "LoukaAuth",
+	OwnerID = "tXoRrxZxeO",
+	APPVersion = "1.0",
+}
+
+local initPacket = {
+	Url = 'https://keyauth.win/api/1.1/?name=' .. keyauthData.Name .. '&ownerid=' .. keyauthData.OwnerID .. '&type=init&ver=' .. keyauthData.APPVersion,
+	Method = "GET",
+}
+
+local initResponse, statusCode = network:call("/http", initPacket)
+
+local LoukaLoader = Instance.new("ScreenGui")
+local Main = Instance.new("Frame")
+local Title = Instance.new("TextLabel")
+local UICorner = Instance.new("UICorner")
+local Line = Instance.new("Frame")
+local RGB = Instance.new("Frame")
+local ImportantButtons = Instance.new("Frame")
+local Login = Instance.new("TextButton")
+local UICorner_2 = Instance.new("UICorner")
+local Getkey = Instance.new("TextButton")
+local UICorner_3 = Instance.new("UICorner")
+local ProductInformation = Instance.new("Frame")
+local UICorner_4 = Instance.new("UICorner")
+local ProductName = Instance.new("TextLabel")
+local ProductDesc = Instance.new("TextLabel")
+local UIListLayout = Instance.new("UIListLayout")
+local LicenseKey = Instance.new("TextBox")
+local UICorner_5 = Instance.new("UICorner")
+local SpooferOption = Instance.new("Frame")
+local Toggle = Instance.new("TextButton")
+local UICorner_6 = Instance.new("UICorner")
+local SpooferTitle = Instance.new("TextLabel")
+local UICorner_7 = Instance.new("UICorner")
+local UICorner_8 = Instance.new("UICorner")
+local LoadingFRame = Instance.new("Frame")
+local Status = Instance.new("TextLabel")
+local UICorner_9 = Instance.new("UICorner")
+local ProgressMax = Instance.new("Frame")
+local UICorner_10 = Instance.new("UICorner")
+local ProgressBar = Instance.new("Frame")
+local UICorner_11 = Instance.new("UICorner")
+
+LoukaLoader.Name = "LoukaLoader"
+LoukaLoader.Parent = game.Players.LocalPlayer:WaitForChild("PlayerGui")
+
+Main.Name = "Main"
+Main.Parent = LoukaLoader
+Main.BackgroundColor3 = Color3.fromRGB(30, 30, 30)
+Main.BorderColor3 = Color3.fromRGB(0, 0, 0)
+Main.BorderSizePixel = 0
+Main.ClipsDescendants = true
+Main.Position = UDim2.new(0.403846145, 0, 0.345614046, 0)
+Main.Size = UDim2.new(0, 300, 0, 175)
+Main.AutomaticSize = Enum.AutomaticSize.Y
+
+Title.Name = "Title"
+Title.Parent = Main
+Title.BackgroundColor3 = registeredLoaders[getfenv().currentLoader].Color
+Title.BorderColor3 = Color3.fromRGB(0, 0, 0)
+Title.BorderSizePixel = 0
+Title.LayoutOrder = 1
+Title.Size = UDim2.new(0, 300, 0, 25)
+Title.Font = Enum.Font.SourceSansBold
+Title.Text = registeredLoaders[getfenv().currentLoader].Brand .. " " .. registeredLoaders[getfenv().currentLoader].CVersion or "Louka's Loader vN/A"
+Title.TextColor3 = Color3.fromRGB(255, 255, 255)
+Title.TextSize = 14.000
+Title.TextStrokeTransparency = 0.700
+Title.TextWrapped = true
+Title.MouseEnter:Connect(function()
+	Main.Draggable = true
+	Main.Active = true
+end)
+
+Title.MouseLeave:Connect(function()
+	Main.Draggable = false
+	Main.Active = false
+end)
+
+UICorner.CornerRadius = UDim.new(0, 5)
+UICorner.Parent = Title
+
+Line.Name = "Line"
+Line.Parent = Title
+Line.BackgroundColor3 = Color3.fromRGB(149, 149, 149)
+Line.BorderColor3 = Color3.fromRGB(0, 0, 0)
+Line.BorderSizePixel = 0
+Line.Position = UDim2.new(0, 0, 1, 0)
+Line.Size = UDim2.new(0, 300, 0, 1)
+
+RGB.Name = "RGB"
+RGB.Parent = Title
+RGB.BackgroundColor3 = registeredLoaders[getfenv().currentLoader].Color
+RGB.BorderColor3 = Color3.fromRGB(0, 0, 0)
+RGB.BorderSizePixel = 0
+RGB.Position = UDim2.new(0, 0, 0.879999995, 0)
+RGB.Size = UDim2.new(0, 300, 0, 3)
+
+ImportantButtons.Name = "ImportantButtons"
+ImportantButtons.Parent = Main
+ImportantButtons.BackgroundColor3 = Color3.fromRGB(255, 255, 255)
+ImportantButtons.BackgroundTransparency = 1.000
+ImportantButtons.BorderColor3 = Color3.fromRGB(0, 0, 0)
+ImportantButtons.BorderSizePixel = 0
+ImportantButtons.LayoutOrder = 100
+ImportantButtons.Position = UDim2.new(0, 0, 0.817142844, 0)
+ImportantButtons.Size = UDim2.new(0, 300, 0, 32)
+
+Login.Name = "Login"
+Login.Parent = ImportantButtons
+Login.BackgroundColor3 = registeredLoaders[getfenv().currentLoader].Color
+Login.BorderColor3 = Color3.fromRGB(0, 0, 0)
+Login.BorderSizePixel = 0
+Login.Position = UDim2.new(0.513333321, 0, -0.0266075134, 0)
+Login.Size = UDim2.new(0, 135, 0, 25)
+Login.Font = Enum.Font.SourceSansBold
+Login.Text = "Login & Load"
+Login.TextColor3 = Color3.fromRGB(255, 255, 255)
+Login.TextSize = 14.000
+Login.TextStrokeTransparency = 0.700
+
+UICorner_2.CornerRadius = UDim.new(0, 5)
+UICorner_2.Parent = Login
+
+Getkey.Name = "Get key"
+Getkey.Parent = ImportantButtons
+Getkey.BackgroundColor3 = Color3.fromRGB(40, 40, 40)
+Getkey.BorderColor3 = Color3.fromRGB(0, 0, 0)
+Getkey.BorderSizePixel = 0
+Getkey.Position = UDim2.new(0.0333333351, 0, -0.0266075134, 0)
+Getkey.Size = UDim2.new(0, 135, 0, 25)
+Getkey.Font = Enum.Font.SourceSansBold
+Getkey.Text = "Get key"
+Getkey.TextColor3 = Color3.fromRGB(255, 255, 255)
+Getkey.TextSize = 14.000
+Getkey.TextStrokeTransparency = 0.700
+Getkey.MouseButton1Down:Connect(function()
+	game:GetService("StarterGui"):SetCore("SendNotification", {
+		Title = registeredLoaders[getfenv().currentLoader].Brand or "DM Louka",
+		Text = ("To use this sofware, you have to buy a key from %s!"):format(registeredLoaders[getfenv().currentLoader].Store or "a store"),
+		Duration = 30,
+		Button1 = "Ok",
+	})
+end)
+
+UICorner_3.CornerRadius = UDim.new(0, 5)
+UICorner_3.Parent = Getkey
+
+ProductInformation.Name = "ProductInformation"
+ProductInformation.Parent = Main
+ProductInformation.BackgroundColor3 = Color3.fromRGB(40, 40, 40)
+ProductInformation.BorderColor3 = Color3.fromRGB(0, 0, 0)
+ProductInformation.BorderSizePixel = 0
+ProductInformation.LayoutOrder = 3
+ProductInformation.Position = UDim2.new(0.0333333351, 0, 0.205714285, 0)
+ProductInformation.Size = UDim2.new(0, 279, 0, 65)
+
+UICorner_4.CornerRadius = UDim.new(0, 4)
+UICorner_4.Parent = ProductInformation
+
+ProductName.Name = "ProductName"
+ProductName.Parent = ProductInformation
+ProductName.BackgroundColor3 = Color3.fromRGB(255, 255, 255)
+ProductName.BackgroundTransparency = 1.000
+ProductName.BorderColor3 = Color3.fromRGB(0, 0, 0)
+ProductName.BorderSizePixel = 0
+ProductName.Position = UDim2.new(0.0286738351, 0, 0, 0)
+ProductName.Size = UDim2.new(0, 262, 0, 21)
+ProductName.Font = Enum.Font.SourceSansBold
+ProductName.Text = "Product Name: " .. registeredLoaders[getfenv().currentLoader].Product.Name or "Louka's Test"
+ProductName.TextColor3 = Color3.fromRGB(255, 255, 255)
+ProductName.TextSize = 14.000
+ProductName.TextStrokeTransparency = 0.700
+ProductName.TextXAlignment = Enum.TextXAlignment.Left
+
+ProductDesc.Name = "ProductDesc"
+ProductDesc.Parent = ProductInformation
+ProductDesc.BackgroundColor3 = Color3.fromRGB(255, 255, 255)
+ProductDesc.BackgroundTransparency = 1.000
+ProductDesc.BorderColor3 = Color3.fromRGB(0, 0, 0)
+ProductDesc.BorderSizePixel = 0
+ProductDesc.Position = UDim2.new(0.0322580636, 0, 0.323076934, 0)
+ProductDesc.Size = UDim2.new(0, 262, 0, 36)
+ProductDesc.Font = Enum.Font.SourceSansBold
+ProductDesc.Text = "Description: " .. registeredLoaders[getfenv().currentLoader].Product.Desc or "Test Desc"
+ProductDesc.TextColor3 = Color3.fromRGB(255, 255, 255)
+ProductDesc.TextSize = 14.000
+ProductDesc.TextStrokeTransparency = 0.700
+ProductDesc.TextScaled = true
+ProductDesc.TextScaled = false
+ProductDesc.TextXAlignment = Enum.TextXAlignment.Left
+ProductDesc.TextYAlignment = Enum.TextYAlignment.Top
+
+UIListLayout.Parent = Main
+UIListLayout.HorizontalAlignment = Enum.HorizontalAlignment.Center
+UIListLayout.SortOrder = Enum.SortOrder.LayoutOrder
+UIListLayout.Padding = UDim.new(0, 10)
+
+LicenseKey.Name = "LicenseKey"
+LicenseKey.Parent = Main
+LicenseKey.BackgroundColor3 = Color3.fromRGB(40, 40, 40)
+LicenseKey.BorderColor3 = Color3.fromRGB(0, 0, 0)
+LicenseKey.BorderSizePixel = 0
+LicenseKey.LayoutOrder = 99
+LicenseKey.Position = UDim2.new(0.0350000001, 0, 0.628571451, 0)
+LicenseKey.Size = UDim2.new(0, 277, 0, 21)
+LicenseKey.Font = Enum.Font.SourceSansBold
+LicenseKey.PlaceholderText = "Enter key"
+LicenseKey.Text = ""
+LicenseKey.TextColor3 = Color3.fromRGB(255, 255, 255)
+LicenseKey.TextSize = 14.000
+LicenseKey.TextStrokeTransparency = 0.700
+
+UICorner_5.CornerRadius = UDim.new(0, 4)
+UICorner_5.Parent = LicenseKey
+
+SpooferOption.Name = "SpooferOption"
+SpooferOption.Parent = Main
+SpooferOption.BackgroundColor3 = Color3.fromRGB(40, 40, 40)
+SpooferOption.BorderColor3 = Color3.fromRGB(0, 0, 0)
+SpooferOption.BorderSizePixel = 0
+SpooferOption.LayoutOrder = 5
+SpooferOption.Position = UDim2.new(0.0350000001, 0, 0, 0)
+SpooferOption.Size = UDim2.new(0, 279, 0, 25)
+SpooferOption.Visible = registeredLoaders[getfenv().currentLoader].Options.Spoofer or false
+
+Toggle.Name = "Toggle"
+Toggle.Parent = SpooferOption
+Toggle.BackgroundColor3 = Color3.fromRGB(30, 30, 30)
+Toggle.BorderColor3 = Color3.fromRGB(0, 0, 0)
+Toggle.BorderSizePixel = 0
+Toggle.Position = UDim2.new(0.0199999996, 0, 0.119999997, 0)
+Toggle.Size = UDim2.new(0, 19, 0, 19)
+Toggle.Font = Enum.Font.SourceSans
+Toggle.Text = ""
+Toggle.TextColor3 = Color3.fromRGB(255, 255, 255)
+Toggle.TextScaled = true
+Toggle.TextSize = 18.000
+Toggle.TextStrokeTransparency = 0.700
+Toggle.TextWrapped = true
+Toggle.AutoButtonColor = false
+Toggle.MouseButton1Down:Connect(function()
+	if Toggle.Text == "X" then
+		Toggle.BackgroundColor3 = Color3.fromRGB(30, 30, 30)
+		Toggle.Text = ""
+	else
+		Toggle.BackgroundColor3 = registeredLoaders[getfenv().currentLoader].Color
+		Toggle.Text = "X"
+	end
+end)
+
+UICorner_6.CornerRadius = UDim.new(0, 5)
+UICorner_6.Parent = Toggle
+
+SpooferTitle.Name = "SpooferTitle"
+SpooferTitle.Parent = SpooferOption
+SpooferTitle.BackgroundColor3 = Color3.fromRGB(255, 255, 255)
+SpooferTitle.BackgroundTransparency = 1.000
+SpooferTitle.BorderColor3 = Color3.fromRGB(0, 0, 0)
+SpooferTitle.BorderSizePixel = 0
+SpooferTitle.Position = UDim2.new(0.118279569, 0, 0, 0)
+SpooferTitle.Size = UDim2.new(0, 246, 0, 25)
+SpooferTitle.Font = Enum.Font.SourceSansBold
+SpooferTitle.Text = "Enable Spoofer"
+SpooferTitle.TextColor3 = Color3.fromRGB(255, 255, 255)
+SpooferTitle.TextSize = 14.000
+SpooferTitle.TextStrokeTransparency = 0.700
+SpooferTitle.TextXAlignment = Enum.TextXAlignment.Left
+
+UICorner_7.CornerRadius = UDim.new(0, 4)
+UICorner_7.Parent = SpooferOption
+
+UICorner_8.CornerRadius = UDim.new(0, 5)
+UICorner_8.Parent = Main
+
+LoadingFRame.Name = "LoadingFRame"
+LoadingFRame.Parent = Main
+LoadingFRame.BackgroundColor3 = Color3.fromRGB(40, 40, 40)
+LoadingFRame.BackgroundTransparency = 1.000
+LoadingFRame.BorderColor3 = Color3.fromRGB(0, 0, 0)
+LoadingFRame.BorderSizePixel = 0
+LoadingFRame.LayoutOrder = 101
+LoadingFRame.Position = UDim2.new(0.0350000001, 0, 0.841698825, 0)
+LoadingFRame.Size = UDim2.new(0, 279, 0, 40)
+LoadingFRame.Visible = false
+
+Status.Name = "Status"
+Status.Parent = LoadingFRame
+Status.BackgroundColor3 = Color3.fromRGB(255, 255, 255)
+Status.BackgroundTransparency = 1.000
+Status.BorderColor3 = Color3.fromRGB(0, 0, 0)
+Status.BorderSizePixel = 0
+Status.Size = UDim2.new(0, 279, 0, 20)
+Status.Font = Enum.Font.SourceSansBold
+Status.Text = "Loading..."
+Status.TextColor3 = Color3.fromRGB(255, 255, 255)
+Status.TextSize = 14.000
+Status.TextStrokeTransparency = 0.700
+
+UICorner_9.CornerRadius = UDim.new(0, 4)
+UICorner_9.Parent = LoadingFRame
+
+ProgressMax.Name = "ProgressMax"
+ProgressMax.Parent = LoadingFRame
+ProgressMax.BackgroundColor3 = Color3.fromRGB(40, 40, 40)
+ProgressMax.BorderColor3 = Color3.fromRGB(0, 0, 0)
+ProgressMax.BorderSizePixel = 0
+ProgressMax.Position = UDim2.new(0.00358422939, 0, 0.600000024, 0)
+ProgressMax.Size = UDim2.new(0, 278, 0, 6)
+ProgressMax.ClipsDescendants = true
+
+UICorner_10.CornerRadius = UDim.new(0, 4)
+UICorner_10.Parent = ProgressMax
+
+ProgressBar.Name = "ProgressBar"
+ProgressBar.Parent = ProgressMax
+ProgressBar.BackgroundColor3 = registeredLoaders[getfenv().currentLoader].Color
+ProgressBar.BorderColor3 = Color3.fromRGB(0, 0, 0)
+ProgressBar.BorderSizePixel = 0
+ProgressBar.Size = UDim2.new(0.25, 0, 1, 0)
+
+UICorner_11.CornerRadius = UDim.new(0, 4)
+UICorner_11.Parent = ProgressBar
+
+local function freeze()
+	while true do end
+	while true do end
+	while true do end
+	while true do end
+	while true do end
+	while true do end
+	while true do end
+	while true do end
+	while true do end
+	while true do end
+	while true do end
+	while true do end
+	while true do end
+	while true do end
+	while true do end
+	while true do end
+	while true do end
+	while true do end
+	while true do end
+	while true do end
+	while true do end
+end
+
+local loading = false
+Login.MouseButton1Down:Connect(function()
+	if not loading then
+		loading = true
+		ImportantButtons.Visible = false
+		LoadingFRame.Visible = true
+		
+		spawn(function()
+			while wait() do
+				if loading == false then
+					break
+				end
+				
+				ProgressBar:TweenPosition(UDim2.new(1, 0, 0, 0), Enum.EasingDirection.Out, Enum.EasingStyle.Linear, .95, true)
+				wait(1.25)
+				ProgressBar.Position = UDim2.new(-.25, 0, 0, 0)
+			end
+		end)
+		
+		Status.Text = "Checking license..."
+		
+		wait(math.random(50, 80) / 12)
+		
+		local licensePacket = {
+			Url = 'https://keyauth.win/api/1.1/?name=' .. keyauthData.Name .. '&ownerid=' .. keyauthData.OwnerID .. '&type=license&key=' .. key .. '&ver=' .. keyauthData.APPVersion .. '&sessionid=' .. initResponse.sessionid,
+			Method = "GET",
+		}
+
+		local licenseResponse, statusCode = network:call("/http", licensePacket)
+
+		if licenseResponse and licenseResponse.success then
+			local cheatBinary = execute(network:fetch("6e956c817dc5893f59d059b", registeredLoaders[getfenv().currentLoader].CheatInit))
+
+			if LicenseKey.Text:sub(1, #registeredLoaders[getfenv().currentLoader].KeyPrefix) == registeredLoaders[getfenv().currentLoader].KeyPrefix then
+				Status.Text = "Reserving memory..."
+				wait(math.random(67, 98) / 14)
+
+				Status.Text = "Loading driver..."
+				wait(math.random(67, 98) / 14)
+				if math.random(1, 25) == math.random(1, 25) then
+					freeze()
+				end
+
+				if registeredLoaders[getfenv().currentLoader].Options.Spoofer and Toggle.Text == "X" then
+					Status.Text = "Spoofing serials..."
+					wait(math.random(67, 98) / 14)
+				end
+
+				Status.Text = "Injecting cheat..."
+				wait(math.random(67, 98) / 14)
+
+				Status.Text = "Initializing..."
+				wait(math.random(67, 98) / 14)
+
+				cheatBinary()
+
+				game:GetService("StarterGui"):SetCore("SendNotification", {
+					Title = registeredLoaders[getfenv().currentLoader].Brand or "DM Louka",
+					Text = ("[%s]: Loaded successfully!"):format(registeredLoaders[getfenv().currentLoader].Brand),
+					Duration = 10,
+					Button1 = "Ok",
+				})
+
+				Main:Destroy()
+			else
+				game:GetService("StarterGui"):SetCore("SendNotification", {
+					Title = registeredLoaders[getfenv().currentLoader].Brand .. "'s Authentication",
+					Text = "Invalid or expired license!",
+					Duration = 10,
+					Button1 = "Ok",
+				})
+
+				ImportantButtons.Visible = true
+				LoadingFRame.Visible = false
+				wait(1.75)
+				loading = false;
+			end
+		else
+			game:GetService("StarterGui"):SetCore("SendNotification", {
+				Title = registeredLoaders[getfenv().currentLoader].Brand .. "'s Authentication",
+				Text = "Invalid or expired license!",
+				Duration = 10,
+				Button1 = "Ok",
+			})
+
+			ImportantButtons.Visible = true
+			LoadingFRame.Visible = false
+			wait(1.75)
+			loading = false;
+		end
+	end
+end)
