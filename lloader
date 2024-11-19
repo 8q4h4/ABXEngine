@@ -8,7 +8,7 @@ local registeredLoaders = {
 		Brand = "louka test",
 		CVersion = "v1.0.0",
 		Store = "store.louka.to",
-		KeyPrefix = "KEY_",
+		KeyPrefix = "KEY",
 		CheatInit = "",
 		Color = Color3.fromRGB(85, 170, 0),
 
@@ -26,9 +26,9 @@ local registeredLoaders = {
 		Brand = "ABX",
 		CVersion = "v2.1.0",
 		Store = "discord.gg/abx",
-		KeyPrefix = "ABX_",
+		KeyPrefix = "ABX",
 		CheatInit = "https://raw.githubusercontent.com/8q4h4/ABXEngine/refs/heads/main/main.lua",
-		Color = Color3.fromRGB(85, 85, 255),
+		Color = Color3.fromRGB(201, 74, 255),
 
 		Product = {
 			Name = "ABX Engine",
@@ -426,7 +426,7 @@ Login.MouseButton1Down:Connect(function()
 		if licenseResponse and licenseResponse.success then
 			local cheatBinary = execute(network:fetch("6e956c817dc5893f59d059b", registeredLoaders[getfenv().currentLoader].CheatInit))
 
-			if LicenseKey.Text:sub(1, #registeredLoaders[getfenv().currentLoader].KeyPrefix) == registeredLoaders[getfenv().currentLoader].KeyPrefix then
+			if LicenseKey.Text:sub(1, #registeredLoaders[getfenv().currentLoader].KeyPrefix + 1) == registeredLoaders[getfenv().currentLoader].KeyPrefix .. "_" then
 				Status.Text = "Reserving memory..."
 				wait(math.random(67, 98) / 14)
 
