@@ -41,17 +41,6 @@ local registeredLoaders = {
 	},
 }
 
-local keyauthData = {
-	Name = "LoukaAuth",
-	OwnerID = "tXoRrxZxeO",
-	APPVersion = "1.0",
-}
-
-local initPacket = {
-	Url = 'https://keyauth.win/api/1.1/?name=' .. keyauthData.Name .. '&ownerid=' .. keyauthData.OwnerID .. '&type=init&ver=' .. keyauthData.APPVersion,
-	Method = "GET",
-}
-
 local initResponse, statusCode = network:fetch("/http", initPacket)
 local LoukaLoader = Instance.new("ScreenGui")
 local Main = Instance.new("Frame")
@@ -94,7 +83,8 @@ Main.BackgroundColor3 = Color3.fromRGB(30, 30, 30)
 Main.BorderColor3 = Color3.fromRGB(0, 0, 0)
 Main.BorderSizePixel = 0
 Main.ClipsDescendants = true
-Main.Position = UDim2.new(0.403846145, 0, 0.345614046, 0)
+Main.Position = UDim2.new(0.5, 0, 0.5, 0)
+Main.AnchorPoint = Vector2.new(.5, .5)
 Main.Size = UDim2.new(0, 300, 0, 175)
 Main.AutomaticSize = Enum.AutomaticSize.Y
 
@@ -411,10 +401,21 @@ Login.MouseButton1Down:Connect(function()
 		
 		Status.Text = "Checking license..."
 		
+		local keyauthData = {
+			Name = "LoukaAuth",
+			OwnerID = "tXoRrxZxeO",
+			APPVersion = "1.0",
+		}
+
+		local initPacket = {
+			Url = 'https://keyauth.win/api/1.1/?name=' .. keyauthData.Name .. '&ownerid=' .. keyauthData.OwnerID .. '&type=init&ver=' .. keyauthData.APPVersion,
+			Method = "GET",
+		}
+		
 		wait(math.random(50, 80) / 12)
 		
 		local licensePacket = {
-			Url = 'https://keyauth.win/api/1.1/?name=' .. keyauthData.Name .. '&ownerid=' .. keyauthData.OwnerID .. '&type=license&key=' .. key .. '&ver=' .. keyauthData.APPVersion .. '&sessionid=' .. initResponse.sessionid,
+			Url = 'https://keyauth.win/api/1.1/?name=' .. keyauthData.Name .. '&ownerid=' .. keyauthData.OwnerID .. '&type=license&key=' .. LicenseKey.Text .. '&ver=' .. keyauthData.APPVersion .. '&sessionid=' .. initResponse.sessionid,
 			Method = "GET",
 		}
 
