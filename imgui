@@ -99,6 +99,10 @@ local Colors = {
 	-- end here
 	AccentText = Color3.fromRGB(235, 235, 235)
 }
+
+function library:updateColors(tab)
+	Colors = tab;
+end
 --//
 
 function library:Window(WindowArgs)
