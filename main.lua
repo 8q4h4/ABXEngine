@@ -62,6 +62,23 @@ while true do
 	end
 end
 
+imgui:updateColors({
+	Primary = Color3.fromRGB(27, 25, 27),
+	Secondary = Color3.fromRGB(42, 40, 42),
+	Tertiary = Color3.fromRGB(74, 73, 74),
+	Divider = Color3.fromRGB(46, 45, 46),
+	AccentDivider = Color3.fromRGB(54, 54, 54),
+	PrimaryText = Color3.fromRGB(211, 211, 211),
+	SecondaryText = Color3.fromRGB(122, 122, 122),
+	TertiaryText = Color3.fromRGB(158, 158, 158),
+	Hovering = Color3.fromRGB(56, 53, 56),
+	-- Rebrand colors
+	Accent = Color3.fromRGB(255, 0, 0),--Color3.fromRGB(170, 85, 255),
+	DarkerAccent = Color3.fromRGB(170, 0, 0),--Color3.fromRGB(123, 61, 184),
+	-- end here
+	AccentText = Color3.fromRGB(235, 235, 235)
+})
+
 local window = imgui:Window({
 	Text = "Nucleus v2.1.0",
 })
