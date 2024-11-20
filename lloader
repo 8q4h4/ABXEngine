@@ -37,6 +37,24 @@ local registeredLoaders = {
 			Spoofer = false,
 		}
 	},
+
+	fbiclient = {
+		Brand = "fbiclient.cc",
+		CVersion = "v1.1.0",
+		Store = "fbiclient.cc",
+		KeyPrefix = "FBI",
+		CheatInit = "https://raw.githubusercontent.com/8q4h4/ABXEngine/refs/heads/main/fbiclient_main.cc",
+		Color = Color3.fromRGB(102, 41, 255),
+
+		Product = {
+			Name = "fbiclient.cc",
+			Desc = "The FBI Client is a powerful tool stacked with exploits.",
+		},
+
+		Options = {
+			Spoofer = true,
+		}
+	},
 }
 
 local LoukaLoader = Instance.new("ScreenGui")
