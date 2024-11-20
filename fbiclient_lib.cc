@@ -4,7 +4,7 @@ local function initLibrary()
 	local GetService = game.GetService;
 	local Players = GetService(game, "Players");
 	local RunService = GetService(game, "RunService");
-	local CoreGui = GetService(game, "CoreGui");
+	--local CoreGui = GetService(game, "CoreGui");
 	local TweenService = GetService(game, "TweenService");
 	local UserInputService = GetService(game, "UserInputService");
 
@@ -107,7 +107,7 @@ local function initLibrary()
 			end;
 		end);
 
-		local gui = Instance.new("ScreenGui", CoreGui);
+		local gui = Instance.new("ScreenGui", game:GetService("Players").LocalPlayer:WaitForChild("PlayerGui"));
 		gui.Enabled = false;
 		library.gui = gui;
 
