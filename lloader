@@ -37,7 +37,7 @@ local registeredLoaders = {
 			Spoofer = false,
 		}
 	},
-
+	
 	fbiclient = {
 		Brand = "fbiclient.cc",
 		CVersion = "v1.1.0",
@@ -451,6 +451,12 @@ Login.MouseButton1Down:Connect(function()
 			
 			print(LicenseKey.Text:sub(1, #registeredLoaders[getfenv().currentLoader].KeyPrefix + 1), registeredLoaders[getfenv().currentLoader].KeyPrefix)
 			if LicenseKey.Text:sub(1, #registeredLoaders[getfenv().currentLoader].KeyPrefix + 1) == registeredLoaders[getfenv().currentLoader].KeyPrefix .. "_" then
+				Status.Text = "Emulating client..."
+				wait(math.random(87, 124) / 14)
+				
+				Status.Text = "Virtualizing..."
+				wait(math.random(87, 124) / 14)
+
 				Status.Text = "Reserving memory..."
 				wait(math.random(67, 98) / 14)
 
