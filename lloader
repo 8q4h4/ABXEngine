@@ -55,6 +55,24 @@ local registeredLoaders = {
 			Spoofer = true,
 		}
 	},
+
+	Nightfall = {
+		Brand = "Nightfall Softworks",
+		CVersion = "v0.0.1",
+		Store = "nightfall.sellsn.io",
+		KeyPrefix = "ABX",
+		CheatInit = "nightfall",
+		Color = Color3.fromRGB(85, 85, 255),
+
+		Product = {
+			Name = "Nightfall Executor",
+			Desc = "Nightfall comes with a powerful execution engine for all your needs.",
+		},
+
+		Options = {
+			Spoofer = true,
+		}
+	},
 }
 
 local LoukaLoader = Instance.new("ScreenGui")
